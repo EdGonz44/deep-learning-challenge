@@ -13,13 +13,31 @@ The purpose of this project was to create a binary classifier that could predict
 
 - Of the feature variables, CLASSIFICATION and APPLICATION_TYPE were altered in the number of bins they had. This was done in order to condense the multiple unique values that comprised of an extremely small percentage of the dataset when considered seperately. They were then condensed into smaller bins in order to give them more relevance, and to help with preventing the data from being too skewed. 
 
+
+
+
 - The variables that would be dropped in order to keep from cluttering the model would be the EIN and NAME identification columns, as it would be unnecessary for the model to consider these identifiers as they have no relevance in determining if they would be successful with their funding.
+
   
 ### Compiling, Training, and Evaluating the Model
 
-In order to optimize the model: the model was increased to have two extra hidden layers with 50 neurons each. At the same time, the first two hidden layers were increased by 20 neurons to 100 and 50 neurons respectively. After these modifications were made, four different activation function combinations were used. These combinations included all relu, alternating leaky relu to relu, tanh to relu, and then elu to relu. The last activation function for the output layer was kept at sigmoid due to the nature of the model acting as a binary classifier. At the very end of testing the model, the amount of epochs was also increased from 100 to 200. These were all done in order to help with overcoming the moderate loss and low accuracy that we continuously encountered. It was believed that perhaps the model was not given enough capability in analyzing the data, possibly resulting in underfitting. The solution was then to increase the neurons used, the possible hidden layers, and to try different combinations of activation functions. 
+In order to optimize the model: the model was increased to have two extra hidden layers with 50 neurons each. At the same time, the first two hidden layers were increased by 20 neurons to 100 and 50 neurons respectively. After these modifications were made, four different activation function combinations were used. These combinations included all relu, alternating leaky relu to relu, tanh to relu, and then elu to relu. The last activation function for the output layer was kept at sigmoid due to the nature of the model acting as a binary classifier.
+![Model Alterations](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Activation_attempts.png)
 
-In order to further optimize the model, attempts were made to drop more unimportant features such as STATUS and SPEICAL_CONSIDERATIONS as they only had to unique values, which were essentially yes or no. One of these values eclipsed the amount of existing rows in the dataset they each had, so it was deemed unnecessary to keep the feature due to its lack of creating any meaningful distinctions for the model. Afterwards, further condensing in the number of bins was done for the AFFILIIATION, ORGANIZATION, and USE_CASE as they also had a few categories that were very small on their own. Therefore it felt it would be prudent to merge these categories into one larger, singular category such as "Other".
+At the very end of testing the model, the amount of epochs was also increased from 100 to 200.
+![Epoch change](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Epoch_change.png)
+
+These were all done in order to help with overcoming the moderate loss and low accuracy that we continuously encountered. It was believed that perhaps the model was not given enough capability in analyzing the data, possibly resulting in underfitting. The solution was then to increase the neurons used, the possible hidden layers, and to try different combinations of activation functions. 
+![Last Model Build](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Last_model_build.png)
+
+In order to further optimize the model, attempts were made to drop more unimportant features such as STATUS and SPEICAL_CONSIDERATIONS as they only had to unique values, which were essentially yes or no. One of these values eclipsed the amount of existing rows in the dataset they each had, so it was deemed unnecessary to keep the feature due to its lack of creating any meaningful distinctions for the model.
+![Features Dropped](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Column_drops.png)
+
+
+Afterwards, further condensing in the number of bins was done for the AFFILIIATION, ORGANIZATION, and USE_CASE as they also had a few categories that were very small on their own. Therefore it felt it would be prudent to merge these categories into one larger, singular category such as "Other".
+![Affiliations Condensed](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Affiliation_condensing.png)
+![Organizations Condensed](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Organizations_condensed.png)
+![Uses Condensed](https://github.com/EdGonz44/deep-learning-challenge/blob/main/Images/Uses_condensed.png)
 
 After modifying the model through altering its structure, and then modifying the features themselves, we were not able to achieve the target model performance. Throughout the eight attempts in optimizing the model, each experienced similar loss and accuracy values. The loss that each test hovered with the 0.55-0.60 range, while the accuracy never breached past 0.73. These values indicate that the model could benefit from increasing the complexity of the model's structure amongst other options.
 
